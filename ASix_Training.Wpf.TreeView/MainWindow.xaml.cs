@@ -16,7 +16,7 @@ namespace ASix_Training.Wpf.TreeView
         /// </summary>
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
         #endregion
     }

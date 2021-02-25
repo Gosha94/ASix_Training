@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ASix_Training.Wpf.TreeView.Directory;
+using System;
 using System.Globalization;
 using System.IO;
 using System.Windows.Data;
@@ -26,7 +27,7 @@ namespace ASix_Training.Wpf.TreeView.Converters
             }
 
             // Получаем имя папки/файла/диска
-            var name = MainWindow.GetFileFolderName(path);
+            var name = DirectoryStructure.GetFileFolderName(path);
 
             // Картинка по умолчанию
             var image = "Images/file.png";

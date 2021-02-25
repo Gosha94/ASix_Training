@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:ASix_Training.Wpf.TreeView"
         mc:Ignorable="d"        
         Title="Wpf Tree View" Height="350" Width="525">
-    <Grid>
+    <StackPanel>
+        <Button Content="{Binding Test}"/>
+        <Grid>
         
         <TreeView x:Name="FolderTreeView">
             <TreeView.Resources>
@@ -16,10 +18,10 @@
                         <Setter.Value>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Width="20" Margin="3" Source="{Binding 
+                                    <!--<Image Width="20" Margin="3" Source="{Binding 
                                                 RelativeSource = {RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeViewItem}},
                                                 Path=Tag,
-                                                Converter={x:Static local:Converters.HeaderToImageConverter.Instance}}" />
+                                                Converter={x:Static local:Converters.HeaderToImageConverter.Instance}}" />-->
                                     <TextBlock VerticalAlignment="Center" Text="{Binding }" />
                                 </StackPanel>
                             </DataTemplate>
@@ -30,4 +32,6 @@
             </TreeView.Resources>
         </TreeView>
     </Grid>
+
+    </StackPanel>
 </Window>

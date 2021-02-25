@@ -22,10 +22,42 @@ namespace ASix_Training.Wpf.TreeView.Directory
                         .ToList();
             
         }
-
+        /// <summary>
+        /// Получаем контент в директориях верхнего уровня
+        /// </summary>
+        /// <param name="fullPath"></param>
+        /// <returns></returns>
         public static List<DirectoryItem> GetDirectoryContents(string fullPath)
         {
+            var items = new List<DirectoryItem>();
 
+            #region Get Folders
+            // Попытаемся получить директории из папки, игнорируя ошибки блоком try...catch
+            try
+            {
+                var dirs = directory.GetDirectories(fullPath);
+                if (dirs.Length > 0)
+                {
+                    items.AddRange(dirs.Select(dir => new DirectoryItem { FullPath = dir, Type = DirectoryItemType.Folder }));
+                }
+            }
+            catch { }
+            #endregion
+
+            #region Get Files
+            // Попытаемся получить файлы из папки, игнорируя ошибки блоком try...catch
+            try
+            {
+                var fs = directory.GetFiles(fullPath);
+                if (fs.Length > 0)
+                {
+                    items.AddRange(fs.Select(file => new DirectoryItem { FullPath = file, Type = DirectoryItemType.File }));
+                }
+            }
+            catch { }
+
+            #endregion
+            return items;
         }
 
         #region Helpers        
