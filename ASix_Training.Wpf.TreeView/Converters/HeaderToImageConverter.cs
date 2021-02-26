@@ -1,4 +1,4 @@
-﻿using ASix_Training.Wpf.TreeView.Directory;
+﻿using ASix_Training.Wpf.TreeView.Directory.Data;
 using System;
 using System.Globalization;
 using System.IO;
@@ -10,37 +10,29 @@ namespace ASix_Training.Wpf.TreeView.Converters
     /// <summary>
     /// Конвертирует полный путь к ресурсу в картинку диска, папки или файла, в зависимости от входного типа
     /// </summary>
-    [ValueConversion(typeof(string), typeof(BitmapImage))]
+    [ValueConversion(typeof(DirectoryItemType), typeof(BitmapImage))]
     public class HeaderToImageConverter : IValueConverter
     {
         public static HeaderToImageConverter Instance = new HeaderToImageConverter();
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            // Получаем полный путь
-            var path = (string)value;
-
-            // Если полный путь пуст, не конвертируем ничего
-            if (path == null)
-            {
-                return null;
-            }
-
-            // Получаем имя папки/файла/диска
-            var name = DirectoryStructure.GetFileFolderName(path);
-
             // Картинка по умолчанию
             var image = "Images/file.png";
 
-            // Если имя пустое, значит мы предполагаем, что в метод передан диск, т.к. имя файла или каталога не может быть пустым
-            if (string.IsNullOrEmpty(name))
+            switch ((DirectoryItemType)value)
             {
-                image = "Images/drive.png";
-            }
-            // Проверяемый путь представляет собой каталог
-            else if (new FileInfo(path).Attributes.HasFlag(FileAttributes.Directory))
-            {
-                image = "Images/folder-closed.png";
+                case DirectoryItemType.Drive:
+                    image = "Images/drive.png";
+                    break;
+
+                case DirectoryItemType.Folder:
+                    image = "Images/folder-closed.png";
+                    break;
+
+                //default:
+                //    image = string.Empty;
+                //    break;
             }
 
             // Возвращаем финальную картинку для элемента, который конвертируется в xaml

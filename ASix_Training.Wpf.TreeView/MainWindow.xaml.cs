@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using ASix_Training.Wpf.TreeView.Directory.ViewModels;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,13 +12,17 @@ namespace ASix_Training.Wpf.TreeView
     public partial class MainWindow : Window
     {
         #region Конструктор
+
         /// <summary>
         /// Конструктор формы по умолчанию
         /// </summary>
         public MainWindow()
         {
-            InitializeComponent();            
+            InitializeComponent();
+
+            this.DataContext = new DirectoryStructureViewModel();            
         }
+
         #endregion
     }
 }

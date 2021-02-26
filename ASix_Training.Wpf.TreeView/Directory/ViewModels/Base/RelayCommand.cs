@@ -4,7 +4,7 @@ using System.Windows.Input;
 namespace ASix_Training.Wpf.TreeView.Directory.ViewModels
 {
     /// <summary>
-    /// Базовая команда, которая запускает действие
+    /// Базовая команда, которая запускает Action
     /// </summary>
     public class RelayCommand : ICommand
     {
@@ -45,9 +45,10 @@ namespace ASix_Training.Wpf.TreeView.Directory.ViewModels
             return true;
         }
 
+        // Выполняет метод действия из команды
         public void Execute(object parameter)
         {
-            throw new NotImplementedException();
+            this._action();
         }
     }
 }
