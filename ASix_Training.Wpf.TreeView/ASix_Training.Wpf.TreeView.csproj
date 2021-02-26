@@ -70,6 +70,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Directory\ViewModels\BaseViewModel.cs" />
+    <Compile Include="Directory\ViewModels\RelayCommand.cs" />
     <Compile Include="TestViewModelClass.cs" />
     <Compile Include="Converters\HeaderToImageConverter.cs" />
     <Compile Include="Directory\Data\DirectoryItem.cs" />

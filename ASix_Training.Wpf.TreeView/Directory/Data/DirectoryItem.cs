@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ASix_Training.Wpf.TreeView.Directory.Data
+﻿namespace ASix_Training.Wpf.TreeView.Directory.Data
 {
     /// <summary>
     /// Информация об элементе директории, например диске, папке, файле
