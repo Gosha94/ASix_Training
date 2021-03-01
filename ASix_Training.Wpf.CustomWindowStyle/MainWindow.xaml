@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ASix_Training.Wpf.CustomWindowStyle"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Icon="Images/Logo/logo-small.png"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel>
+        <TextBlock Text="Welcome, friend!" FontSize="40" />
+        <TextBlock Text="Welcome, friend!" FontSize="40" FontFamily="{StaticResource LatoRegular}"  />
+        <TextBlock Text="Welcome, friend!" FontSize="40" FontFamily="{StaticResource LatoThin}"  />
+    </StackPanel>
 </Window>
