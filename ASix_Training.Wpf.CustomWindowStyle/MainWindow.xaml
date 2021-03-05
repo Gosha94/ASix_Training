@@ -7,11 +7,15 @@
         mc:Ignorable="d"
         WindowStyle="None"
         AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        x:Name="AppWindow"
         Icon="Images/Logo/logo-small.png"
-        Title="MainWindow" Height="350" Width="525">
-    <StackPanel>
-        <TextBlock Text="Welcome, friend!" FontSize="40" />
-        <TextBlock Text="Welcome, friend!" FontSize="40" FontFamily="{StaticResource LatoRegular}"  />
-        <TextBlock Text="Welcome, friend!" FontSize="40" FontFamily="{StaticResource LatoThin}"  />
-    </StackPanel>
+        Title="Welcome, friend!" Height="600" Width="900">
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome ResizeBorderThickness="{Binding ResizeBorderThickness}" />
+    </WindowChrome.WindowChrome>
+    
+    <Grid>        
+    </Grid>
 </Window>
