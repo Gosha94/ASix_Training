@@ -9,13 +9,129 @@
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
         x:Name="AppWindow"
+        MinWidth="{Binding WindowMinimumWidth}"
+        MinHeight="{Binding WindowMinimumHeight}"
         Icon="Images/Logo/logo-small.png"
         Title="Welcome, friend!" Height="600" Width="900">
 
+    <Window.Resources>
+        <Style TargetType="{x:Type local:MainWindow}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Window}">
+                        
+                        <!-- Внешняя рамка с тенью и отступом -->
+                        <Border Padding="{Binding OuterMarginSizeThickness, FallbackValue=10}">
+                            
+                            <!-- Контур главного окна -->
+                            <Grid>
+                                
+                                <!-- Прозрачная маска для углов сетки -->
+                                <Border x:Name="Container"
+                                        Background="{StaticResource BackgroundLightBrush}"
+                                        CornerRadius="{Binding WindowCornerRadius,FallbackValue=10}" />
+
+                                <!-- Рамка главного окна с тенью -->
+                                <Border CornerRadius="{Binding WindowCornerRadius, FallbackValue=10}"
+                                        Background="{Binding ForegroundLightBrush, FallbackValue=White}">
+                                    <Border.Effect>
+                                        <DropShadowEffect ShadowDepth="0" Opacity="0.2" />
+                                    </Border.Effect>                                    
+                                </Border>
+
+                                <!-- Содержимое главного окна -->
+                                <Grid>
+
+                                    <!-- Обрезка выступающих углов -->
+                                    <Grid.OpacityMask>
+                                        <VisualBrush Visual="{Binding ElementName=Container}" /> 
+                                    </Grid.OpacityMask>
+                                    
+                                    <Grid.RowDefinitions>
+                                        <!-- Заголовок -->
+                                        <RowDefinition Height="{Binding TitleHeightGridLength, FallbackValue=42}" />
+                                        <!-- Тень -->
+                                        <RowDefinition Height="Auto" />
+                                        <!-- Содержимое окна -->
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+
+                                    <!-- Заголовок -->
+                                    <Grid Grid.Column="0" Panel.ZIndex="1">
+                                        <Grid.ColumnDefinitions>
+                                            <!-- Иконка -->
+                                            <ColumnDefinition Width="Auto" />
+                                            <!-- Заголовок окна -->
+                                            <ColumnDefinition Width="*" />
+                                            <!-- Кнопки управления окном -->
+                                            <ColumnDefinition Width="Auto" />                                            
+                                        </Grid.ColumnDefinitions>
+
+                                        <!-- Иконка -->
+                                        <Button Style="{StaticResource SystemIconButton}" Command="{Binding MenuCommand}">
+                                            <Image Source="/Images/Logo/logo-small.png" />
+                                        </Button>
+                                        
+                                        <!-- Заголовок окна -->
+                                        <Viewbox Grid.Column="1" Margin="0">
+                                            <TextBlock Style="{StaticResource HeaderText}" Text="{Binding RelativeSource={RelativeSource TemplatedParent},Path=Title, FallbackValue='Welcome, Friend!'}" />
+                                        </Viewbox>                                       
+
+                                        <!-- Кнопки управления окном -->
+                                        <StackPanel Grid.Column="2" Orientation="Horizontal">
+                                            <Button Command="{Binding MinimizedCommand}" Style="{StaticResource WindowControlButton}" Content="_" />
+                                            <Button Command="{Binding MaximizedCommand}" Style="{StaticResource WindowControlButton}" Content="[ ]" />
+                                            <Button Command="{Binding CloseCommand}" Style="{StaticResource WindowCloseButton}" Content="X" />
+                                        </StackPanel>
+                                        
+                                    </Grid>
+                                    
+                                    <!-- Тень -->
+                                    <Border Grid.Row="1" Height="6" BorderThickness="0 0.2 0 0">
+                                        <!-- Подчеркивание -->
+                                        <Border.BorderBrush>
+                                            <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 0">
+                                                <GradientStop Color="{StaticResource ForegroundLight}" Offset="0.0" />
+                                                <GradientStop Color="{StaticResource ForegroundMain}" Offset="0.5" />
+                                                <GradientStop Color="{StaticResource ForegroundLight}" Offset="1.0" />
+                                            </LinearGradientBrush>
+                                        </Border.BorderBrush>
+                                        
+                                        <!-- Тень -->
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0, 0" EndPoint="0, 1">
+                                                <GradientStop Color="{StaticResource BackgroundVeryLight}" Offset="0.0" />
+                                                <GradientStop Color="{StaticResource ForegroundLight}" Offset="1.0" />                                                
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                        
+                                    </Border>
+                                    
+                                    <!-- Содержимое страницы -->
+                                    <Border Grid.Row="2" Padding="{Binding InnerContentPadding}">
+                                        <ContentPresenter Content="{TemplateBinding Content}" />
+                                    </Border>
+
+                                </Grid>
+
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    
     <WindowChrome.WindowChrome>
-        <WindowChrome ResizeBorderThickness="{Binding ResizeBorderThickness}" />
+        <WindowChrome 
+            ResizeBorderThickness="{Binding ResizeBorderThickness}"                        
+            CaptionHeight="{Binding TitleHeight}"
+            CornerRadius="0"
+            GlassFrameThickness="0"
+            />
     </WindowChrome.WindowChrome>
     
-    <Grid>        
+    <Grid Background="{StaticResource ForegroundLightBrush}">        
     </Grid>
+    
 </Window>
