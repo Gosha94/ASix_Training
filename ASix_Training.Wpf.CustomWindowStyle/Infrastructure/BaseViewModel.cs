@@ -1,7 +1,7 @@
 ﻿using PropertyChanged;
 using System.ComponentModel;
 
-namespace ASix_Training.Wpf.CustomWindowStyle.ViewModel
+namespace ASix_Training.Wpf.CustomWindowStyle.Infrastructure
 {
     /// <summary>
     /// Базовая модель представления которая поддерживает события PropertyChanged, все дочерние классы будут пробрасывать свои свойства во вью без дублей кода

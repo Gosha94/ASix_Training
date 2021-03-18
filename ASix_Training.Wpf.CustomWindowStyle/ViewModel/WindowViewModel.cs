@@ -1,4 +1,5 @@
-﻿using ASix_Training.Wpf.CustomWindowStyle.Window;
+﻿using ASix_Training.Wpf.CustomWindowStyle.DataModels;
+using ASix_Training.Wpf.CustomWindowStyle.Window;
 using System.Windows;
 using System.Windows.Input;
 
@@ -96,6 +97,11 @@ namespace ASix_Training.Wpf.CustomWindowStyle.ViewModel
         /// 
         /// </summary>
         public GridLength TitleHeightGridLength { get => new GridLength(this.TitleHeight + this.ResizeBorder); }
+
+        /// <summary>
+        /// Текущая страница приложения
+        /// </summary>
+        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Login;
 
         #endregion
 

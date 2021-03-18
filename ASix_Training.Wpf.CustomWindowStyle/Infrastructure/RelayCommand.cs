@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace ASix_Training.Wpf.CustomWindowStyle.ViewModel
+namespace ASix_Training.Wpf.CustomWindowStyle.Infrastructure
 {
     /// <summary>
     /// Базовая команда, которая запускает Action
