@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ASix_Training.Wpf.CustomWindowStyle"
+        xmlns:local="clr-namespace:ASix_Training.Wpf.CustomWindowStyle" 
+        xmlns:ValueConverters="clr-namespace:ASix_Training.Wpf.CustomWindowStyle.ValueConverters"
         mc:Ignorable="d"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -134,7 +135,7 @@
     </WindowChrome.WindowChrome>
     
     <Grid Background="{StaticResource ForegroundLightBrush}">
-        <Frame x:Name="MainFrame" Content="{Binding CurrentPage}" />
+        <Frame x:Name="MainFrame" Content="{Binding CurrentPage, Converter={ValueConverters:ApplicationPageValueConverter }}" />
     </Grid>
     
 </Window>

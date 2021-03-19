@@ -1,7 +1,8 @@
 ﻿using ASix_Training.Wpf.CustomWindowStyle.DataModels;
-using ASix_Training.Wpf.CustomWindowStyle.Window;
+using ASix_Training.Wpf.CustomWindowStyle.Infrastructure;
 using System.Windows;
 using System.Windows.Input;
+using ASix_Training.Wpf.CustomWindowStyle.Window;
 
 namespace ASix_Training.Wpf.CustomWindowStyle.ViewModel
 {
@@ -27,6 +28,12 @@ namespace ASix_Training.Wpf.CustomWindowStyle.ViewModel
         /// Радиус закругления граней окна
         /// </summary>
         private int _windowRadius = 10;
+        
+        /// <summary>
+        /// Последняя известная позиция закрепления окна
+        /// </summary>
+        private WindowDockPosition _dockPosition = WindowDockPosition.Undocked;
+
         #endregion
 
         #region Public Properties
@@ -42,9 +49,14 @@ namespace ASix_Training.Wpf.CustomWindowStyle.ViewModel
         public double WindowMinimumHeight { get; set; } = 400;
 
         /// <summary>
+        /// Истина, если окну следует добавить границу, т.к. оно закреплено или развернуто
+        /// </summary>
+        public bool Borderless { get => _window.WindowState == WindowState.Maximized || _dockPosition != WindowDockPosition.Undocked; }
+
+        /// <summary>
         /// Размер меняющей размер рамки вокруг окна
         /// </summary>
-        public int ResizeBorder { get; set; } = 6;
+        public int ResizeBorder { get => Borderless ? 0 : 6; }
         /// <summary>
         /// Размер меняющей размер рамки вокруг окна, учитывая внешний отступ
         /// </summary>
@@ -53,7 +65,7 @@ namespace ASix_Training.Wpf.CustomWindowStyle.ViewModel
         /// <summary>
         /// Отступ внутреннего содержимого от главного окна
         /// </summary>
-        public Thickness InnerContentPadding { get => new Thickness(this.ResizeBorder); }
+        public Thickness InnerContentPadding { get; set; } = new Thickness(0);
 
         /// <summary>
         /// Отступ вокруг окна для создания тени
