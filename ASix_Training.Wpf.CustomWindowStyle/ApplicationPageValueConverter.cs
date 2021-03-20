@@ -10,7 +10,11 @@ namespace ASix_Training.Wpf.CustomWindowStyle.ValueConverters
     /// Преобразует enum <see cref="ApplicationPage"/> в текущий view/page
     /// </summary>
     public class ApplicationPageValueConverter : BaseValueConverter<ApplicationPageValueConverter>
-    {       
+    {
+        public ApplicationPageValueConverter() : base()
+        {
+        }
+
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             // Поиск подходящего view страницы
