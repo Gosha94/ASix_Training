@@ -67,7 +67,7 @@
     </Compile>
     <Compile Include="Infrastructure\BaseViewModel.cs" />
     <Compile Include="Infrastructure\RelayCommand.cs" />
-    <Compile Include="ApplicationPageValueConverter.cs" />
+    <Compile Include="ValueConverters\ApplicationPageValueConverter.cs" />
     <Compile Include="ValueConverters\BaseValueConverter.cs" />
     <Compile Include="ViewModel\WindowViewModel.cs" />
     <Compile Include="Window\WindowResizer.cs" />

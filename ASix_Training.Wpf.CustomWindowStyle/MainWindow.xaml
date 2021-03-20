@@ -76,8 +76,8 @@
                                         </Button>
                                         
                                         <!-- Заголовок окна -->
-                                        <Viewbox Grid.Column="1" Margin="0">
-                                            <TextBlock Style="{StaticResource HeaderText}" Text="{Binding RelativeSource={RelativeSource TemplatedParent},Path=Title, FallbackValue='Welcome, Friend!'}" />
+                                        <Viewbox Grid.Column="0" Grid.ColumnSpan="3" Margin="0">
+                                            
                                         </Viewbox>                                       
 
                                         <!-- Кнопки управления окном -->
@@ -135,7 +135,7 @@
     </WindowChrome.WindowChrome>
     
     <Grid Background="{StaticResource ForegroundLightBrush}">
-        <Frame x:Name="MainFrame" Content="{Binding CurrentPage, Converter={ValueConverters:ApplicationPageValueConverter }}" />
+        <Frame x:Name="MainFrame" Content="{Binding CurrentPage, Converter={ValueConverters:ApplicationPageValueConverter}}" />
     </Grid>
     
 </Window>
