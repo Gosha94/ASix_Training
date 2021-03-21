@@ -119,17 +119,7 @@
                                     <Border Grid.Row="1" Padding="{Binding InnerContentPadding}">
                                         <ContentPresenter Content="{TemplateBinding Content}" />
                                     </Border>
-
-                                    <!--<Border Grid.Row="1" Padding="{Binding InnerContentPadding}" Background="{StaticResource WordBlueBrush}">
-                                        <Border>
-                                            <Border.Background>
-                                                <ImageBrush TileMode="Tile" ViewportUnits="Absolute" Viewport="0 0 500 500" ImageSource="/Images/Backgrounds/emoji-background.png" />
-                                            </Border.Background>
-                                            
-                                            <ContentPresenter Content="{TemplateBinding Content}" />
-                                        </Border>
-                                    </Border>-->
-
+                                    
                                 </Grid>
 
                             </Grid>

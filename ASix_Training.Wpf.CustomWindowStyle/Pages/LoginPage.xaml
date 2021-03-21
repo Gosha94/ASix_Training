@@ -5,10 +5,59 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ASix_Training.Wpf.CustomWindowStyle.Pages"
       mc:Ignorable="d"      
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="700" d:DesignWidth="700"
       Title="LoginPage">
 
     <Border Background="{StaticResource WordBlueBrush}">
-        <Button Content="Content of LoginPage" HorizontalAlignment="Center" />
+        <Grid>
+            <Grid.Background>
+                <!-- Фон будет бесшовным, расширяться при растягивании -->
+                <ImageBrush TileMode="Tile" ViewportUnits="Absolute" Viewport="0 0 500 500" ImageSource="/Images/Backgrounds/emoji-background.png" />
+            </Grid.Background>
+
+            <!-- Скролл главного контента -->
+            <ScrollViewer 
+                VerticalScrollBarVisibility="Auto" 
+                HorizontalScrollBarVisibility="Auto" >
+                <!-- Размещаем весь контент с авторизацией внутри стек-панели с выравниванием по центру -->
+                <StackPanel 
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center"
+                    TextBlock.TextAlignment="Center" >
+
+                    <!-- Контент белого окна с логином -->
+                    <Border Background="{StaticResource ForegroundLightBrush}"
+                            CornerRadius="10"
+                            Padding="15 50 15 15 "
+                            Width="400"
+                            Margin="50 50 50 0">
+                        
+                        <StackPanel>
+                            <!-- Заголовок -->
+                            <TextBlock Text="Sign Up" 
+                                       FontSize="{StaticResource FontSizeLarge}" 
+                                       FontFamily="{StaticResource LatoRegular}" 
+                                       Foreground="{StaticResource WordBlueBrush}" />
+                            
+                            <TextBlock Text="It's about to get fun" 
+                                       FontSize="{StaticResource FontSizeRegular}" 
+                                       Foreground="{StaticResource ForegroundDarkBrush}" />
+
+                            <!-- Email -->
+                            <TextBox />
+                            <!-- Password -->
+                            <TextBox />
+                            <!-- Next button -->
+                            <Button Content="Next" HorizontalAlignment="Center" />
+
+                        </StackPanel>
+                        
+                    </Border>
+                    
+                </StackPanel>
+            </ScrollViewer>
+            
+            
+        </Grid>        
     </Border>    
 </Page>
