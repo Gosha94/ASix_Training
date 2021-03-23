@@ -7,7 +7,8 @@
       mc:Ignorable="d"
       d:DesignHeight="700" d:DesignWidth="700"
       Title="LoginPage">
-    
+  
+
     <Border Background="{StaticResource WordBlueBrush}">
         <Grid>
             <Grid.Background>
@@ -54,7 +55,7 @@
 
                     </Border>
 
-                    <Button Style="{StaticResource BaseStyle}" Content="I already have an account" HorizontalAlignment="Center" />
+                    <Button Content="I already have an account" HorizontalAlignment="Center" Template="{DynamicResource ButtonControlTemplate1}" />
 
                 </StackPanel>
             </ScrollViewer>

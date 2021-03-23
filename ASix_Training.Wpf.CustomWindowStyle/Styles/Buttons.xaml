@@ -72,17 +72,26 @@
         </Style.Triggers>
     </Style>
 
-    <!-- Стандартная кнопка -->
-    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}">
 
-        <Setter Property="Background" Value="Red" />
-        <!--<Setter Property="Background" Value="{StaticResource WordOrangeBrush}" />
+    <Style TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="Red"/>
+    </Style>
+    
+    
+        <!--<ControlTemplate x:Key="ButtonControlTemplate1" >
+            <Grid/>
+        </ControlTemplate>-->
+    
+    <!-- Стандартная кнопка -->
+    <!--<Style x:Key="TestButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}">
+        
+        <Setter Property="Background" Value="{StaticResource WordOrangeBrush}" />
         <Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="FontSize" Value="{StaticResource FontSizeLarge}" />
         <Setter Property="FontFamily" Value="{StaticResource LatoRegular}" />
         <Setter Property="Padding" Value="50 10" />
-        <Setter Property="Margin" Value="0 10" />-->
+        <Setter Property="Margin" Value="0 10" />
 
         <Setter Property="Template">
             <Setter.Value>
@@ -112,6 +121,6 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>
+    </Style>-->
 
 </ResourceDictionary>
