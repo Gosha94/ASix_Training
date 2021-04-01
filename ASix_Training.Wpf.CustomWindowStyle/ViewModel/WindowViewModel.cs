@@ -6,6 +6,11 @@ using ASix_Training.Wpf.CustomWindowStyle.Window;
 
 namespace ASix_Training.Wpf.CustomWindowStyle.ViewModel
 {
+    public class MyPasswordBox
+    {
+
+    }
+
     /// <summary>
     /// Модель представления для кастомного окна со стилями
     /// </summary>
@@ -73,7 +78,7 @@ namespace ASix_Training.Wpf.CustomWindowStyle.ViewModel
         public int OuterMarginSize
         {
             // Если окно развернуто на весь экран, то мы ставим ему отступ в 0, иначе отступ есть
-            get => _window.WindowState == WindowState.Maximized ? 0 : _outerMarginSize;
+            get => Borderless ? 0 : _outerMarginSize;
             set
             {
                 _outerMarginSize = value;
