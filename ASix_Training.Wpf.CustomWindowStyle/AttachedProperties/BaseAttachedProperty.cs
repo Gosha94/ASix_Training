@@ -1,4 +1,7 @@
-﻿namespace ASix_Training.Wpf.CustomWindowStyle.AttachedProperties
+﻿using System;
+using System.Windows;
+
+namespace ASix_Training.Wpf.CustomWindowStyle.AttachedProperties
 {
     /// <summary>
     /// Общий класс для всех прикрепляемых свойств
@@ -18,25 +21,36 @@
 
         #endregion
 
+        #region Attached Property Definitions
 
-        public string WhatsMyType()
+        public static readonly DependencyProperty ValueProperty = DependencyProperty.RegisterAttached("Value", typeof(Property), typeof(BaseAttachedProperty<Parent, Property>), new PropertyMetadata(new PropertyChangedCallback(OnValuePropertyChanged)));
+
+        /// <summary>
+        /// Cобытие обратного вызова, срабатыввает, когда меняется ValueProperty
+        /// </summary>
+        /// <param name="d">UI элемент, который имеет изменяемое свойство</param>
+        /// <param name="e">Аргументы события</param>
+        private static void OnValuePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            return typeof(T).ToString();
+            
         }
+
+        /// <summary>
+        /// Метод получает прикрепляемое свойство
+        /// </summary>
+        /// <param name="d">Элемент, который получает свойство</param>
+        /// <returns></returns>
+        public static Property GetValue(DependencyObject d) => (Property)d.GetValue(ValueProperty);
+
+        /// <summary>
+        /// Метод устанавливает присоединенное свойство
+        /// </summary>
+        /// <param name="d">Элемент для получения свойства</param>
+        /// <param name="value">Значение для установки свойства</param>
+        public static void SetValue(DependencyObject d, Property value) => d.SetValue(ValueProperty, value);
+
+        #endregion
+
+
     }
-
-    public class MyAttachedProperty : BaseAttachedProperty<bool>
-    {
-
-    }
-
-    public class A
-    {
-        public A()
-        {
-            var m = new MyAttachedProperty();
-            m.WhatsMyType();
-        }
-    }
-
 }
