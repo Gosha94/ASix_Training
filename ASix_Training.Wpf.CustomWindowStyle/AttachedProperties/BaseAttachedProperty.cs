@@ -9,8 +9,17 @@ namespace ASix_Training.Wpf.CustomWindowStyle.AttachedProperties
     /// <typeparam name="Parent">Родительский класс который является прикрепляемым свойством</typeparam>
     /// <typeparam name="Property">Тип прикрепляемого свойства</typeparam>
     public abstract class BaseAttachedProperty<Parent, Property>
-        where Parent : new()
+        where Parent : BaseAttachedProperty<Parent,Property>, new()
     {
+
+        #region Public Events
+        
+        /// <summary>
+        /// Запускается когда значение было изменено
+        /// </summary>
+        public event Action<DependencyObject, DependencyPropertyChangedEventArgs> ValueChanged = (sender, e) => { };
+
+        #endregion
 
         #region Public Properties
 
@@ -32,7 +41,11 @@ namespace ASix_Training.Wpf.CustomWindowStyle.AttachedProperties
         /// <param name="e">Аргументы события</param>
         private static void OnValuePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            
+            // Вызываем родительскую функцию
+            Instance.OnValueChanged(d, e);
+
+            // Вызываем слушатели события
+            Instance.ValueChanged(d, e);
         }
 
         /// <summary>
@@ -51,6 +64,14 @@ namespace ASix_Training.Wpf.CustomWindowStyle.AttachedProperties
 
         #endregion
 
-
+        #region EventMethods
+        /// <summary>
+        /// Метод который вызывается прикрепленным св-вом меняемого типа
+        /// </summary>
+        /// <param name="sender">UI элемент, который меняет свойство</param>
+        /// <param name="e">Аргументы события</param>
+        public virtual void OnValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e) { }
+        
+        #endregion
     }
 }
