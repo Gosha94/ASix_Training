@@ -139,8 +139,14 @@
             />
     </WindowChrome.WindowChrome>
     
-    <Grid Background="{StaticResource ForegroundLightBrush}">
-        <Frame x:Name="MainFrame" Content="{Binding CurrentPage, Converter={ValueConverters:ApplicationPageValueConverter}}" />
-    </Grid>
-    
+    <Border Background="{StaticResource WordBlueBrush}">
+        <Grid>
+            <Grid.Background>                
+             <!--Фон будет бесшовным, расширяться при растягивании-->             
+                <ImageBrush TileMode="Tile" ViewportUnits="Absolute" Viewport="0 0 500 500" ImageSource="/Images/Backgrounds/emoji-background.png" />
+            </Grid.Background>
+
+            <Frame x:Name="MainFrame" Content="{Binding CurrentPage, Converter={ValueConverters:ApplicationPageValueConverter}}" />
+        </Grid>
+    </Border>
 </Window>

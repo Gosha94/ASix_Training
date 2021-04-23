@@ -1,20 +1,17 @@
-﻿<Page
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="clr-namespace:ASix_Training.Wpf.CustomWindowStyle"
-      xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" x:Class="ASix_Training.Wpf.CustomWindowStyle.Pages.LoginPage"
-      mc:Ignorable="d"
-      d:DesignHeight="700" d:DesignWidth="700"
-      Title="LoginPage">
-    
-    <Border Background="{StaticResource WordBlueBrush}">
-        <Grid>
-            <Grid.Background>
-                <!-- Фон будет бесшовным, расширяться при растягивании -->
-                <ImageBrush TileMode="Tile" ViewportUnits="Absolute" Viewport="0 0 500 500" ImageSource="/Images/Backgrounds/emoji-background.png" />
-            </Grid.Background>
+﻿<pages:BasePage 
+        x:Class="ASix_Training.Wpf.CustomWindowStyle.Pages.LoginPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"        
+        xmlns:pages="clr-namespace:ASix_Training.Wpf.CustomWindowStyle.Pages"
+        mc:Ignorable="d"
+        d:DesignHeight="700" d:DesignWidth="700"
+        Title="LoginPage"
+        >
+
+    <Border>
+        <Grid>            
 
             <!-- Скролл главного контента -->
             <ScrollViewer 
@@ -59,8 +56,6 @@
 
                 </StackPanel>
             </ScrollViewer>
-
-
         </Grid>
     </Border>
-</Page>
+</pages:BasePage>
