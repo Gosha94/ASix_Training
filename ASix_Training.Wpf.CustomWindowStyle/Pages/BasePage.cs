@@ -14,7 +14,7 @@ namespace ASix_Training.Wpf.CustomWindowStyle.Pages
     {
         #region Public Properties
         /// <summary>
-        /// Анимация при первой загрузке страницы
+        /// Анимация при загрузке страницы
         /// </summary>
         public PageAnimation PageLoadAnimation { get; set; } = PageAnimation.SlideAndFadeInFromRight;
 
@@ -35,11 +35,11 @@ namespace ASix_Training.Wpf.CustomWindowStyle.Pages
         /// </summary>
         public BasePage()
         {
+            // Если статус анимации - не отключена, значит она работает, скрываем ее до полной загрузки страницы
             if (this.PageLoadAnimation != PageAnimation.None)
             {
                 Visibility = Visibility.Collapsed;
             }
-                
 
             // Прослушиваем событие конца загрузки страницы в память
             this.Loaded += BasePage_Loaded;
@@ -59,7 +59,11 @@ namespace ASix_Training.Wpf.CustomWindowStyle.Pages
             await AnimateIn();
         }
 
-        private async Task AnimateIn()
+        /// <summary>
+        /// Начальная анимация страницы
+        /// </summary>
+        /// <returns></returns>
+        public async Task AnimateIn()
         {
             // Убедимся, что анимация должна выполняться
             if (this.PageLoadAnimation == PageAnimation.None)
@@ -69,31 +73,34 @@ namespace ASix_Training.Wpf.CustomWindowStyle.Pages
 
             switch (this.PageLoadAnimation)
             {
-                case PageAnimation.None:
-                    break;
                 case PageAnimation.SlideAndFadeInFromRight:
-                    var storyBoard = new Storyboard();
-                    var slideAnimation = new ThicknessAnimation
-                    {
-                        Duration = new Duration(TimeSpan.FromSeconds(this.SlideSeconds)),
-                        From = new Thickness(this.WindowWidth, 0, -this.WindowWidth, 0),
-                        To = new Thickness(0),
-                        DecelerationRatio = 0.9f
-                    };
-                    Storyboard.SetTargetProperty(slideAnimation, new PropertyPath("Margin"));
-                    storyBoard.Children.Add(slideAnimation);
                     
-                    storyBoard.Begin(this);
-
-                    this.Visibility = Visibility.Visible;
-
-                    await Task.Delay((int)(this.SlideSeconds * 1000));
-
+                    // Стартуем анимацию
+                    await this.SlideAndFadeInFromRight(this.SlideSeconds);
+                    
                     break;
+            }
+        }
 
+        /// <summary>
+        /// Конечная анимация страницы
+        /// </summary>
+        /// <returns></returns>
+        public async Task AnimateOut()
+        {
+            // Убедимся, что анимация должна выполняться
+            if (this.PageUnLoadAnimation == PageAnimation.None)
+            {
+                return;
+            }
+
+            switch (this.PageUnLoadAnimation)
+            {
                 case PageAnimation.SlideAndFadeOutToLeft:
-                    break;
-                default:
+
+                    // Стартуем анимацию
+                    await this.SlideAndFadeOutToLeft(this.SlideSeconds);
+
                     break;
             }
         }

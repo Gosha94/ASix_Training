@@ -46,7 +46,7 @@
                             <TextBox Tag="Email" />
                             <!-- Password -->
                             <PasswordBox Tag="Password" Margin="0 0 0 30" />
-                            <Button Style="{StaticResource StandardButton}" IsEnabled="True" Content="Next" HorizontalAlignment="Center" />
+                            <Button Click="NextButton_Click" Style="{StaticResource StandardButton}" IsEnabled="True" Content="Next" HorizontalAlignment="Center" />
 
                         </StackPanel>
 

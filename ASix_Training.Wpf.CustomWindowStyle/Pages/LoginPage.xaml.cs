@@ -1,4 +1,6 @@
-﻿namespace ASix_Training.Wpf.CustomWindowStyle.Pages
+﻿using System.Windows;
+
+namespace ASix_Training.Wpf.CustomWindowStyle.Pages
 {
     /// <summary>
     /// Логика взаимодействия для LoginPage.xaml
@@ -8,6 +10,11 @@
         public LoginPage()
         {
             InitializeComponent();
+        }
+
+        private void NextButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.AnimateOut();
         }
     }
 }
