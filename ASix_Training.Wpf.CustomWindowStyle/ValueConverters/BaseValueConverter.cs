@@ -14,11 +14,13 @@ namespace ASix_Training.Wpf.CustomWindowStyle.ValueConverters
         /// Единственный статичный экземпляр конвертера значения
         /// </summary>
         private static T _converter = null;
+        #endregion
 
+        #region Constructor
         public BaseValueConverter()
         {
-        }
 
+        }
         #endregion
 
         #region Markup Extension Methods

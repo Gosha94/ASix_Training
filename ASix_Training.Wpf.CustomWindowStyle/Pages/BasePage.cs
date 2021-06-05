@@ -1,9 +1,7 @@
-﻿using ASix_Training.Wpf.CustomWindowStyle.Animation;
-using System;
+﻿using System.Windows;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media.Animation;
+using ASix_Training.Wpf.CustomWindowStyle.Animation;
 
 namespace ASix_Training.Wpf.CustomWindowStyle.Pages
 {

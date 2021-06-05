@@ -1,8 +1,8 @@
-﻿using ASix_Training.Wpf.CustomWindowStyle.DataModels;
-using ASix_Training.Wpf.CustomWindowStyle.Pages;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Globalization;
+using ASix_Training.Wpf.CustomWindowStyle.Pages;
+using ASix_Training.Wpf.CustomWindowStyle.DataModels;
 
 namespace ASix_Training.Wpf.CustomWindowStyle.ValueConverters
 {
